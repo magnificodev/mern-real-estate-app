@@ -1,0 +1,1 @@
+export const propertyType = ["house", "apartment", "condo", "townhouse", "villa", "penthouse"];

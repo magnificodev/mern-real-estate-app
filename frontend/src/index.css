@@ -9,3 +9,11 @@ body {
 .section-container {
     @apply container mx-auto max-w-screen-xl px-4 xl:px-0;
 }
+
+.separator-r {
+    @apply relative after:-right-8 after:content-[""] after:absolute after:w-[2px] after:h-3/4 after:bg-gray-300 after:top-1/2 after:-translate-y-1/2 after:rounded-full;
+}
+
+.md\:separator-r-hidden {
+    @apply hidden md:block;
+}

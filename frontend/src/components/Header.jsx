@@ -28,7 +28,7 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="w-1/3 flex items-center justify-end gap-4 h-full">
                     <button className="hidden px-6 py-2 transition-all duration-100 hover:scale-105 hover:text-teal-700 md:block">
                         <Link to="/signin">Sign in</Link>
                     </button>

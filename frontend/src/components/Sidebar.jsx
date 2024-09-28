@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const Sidebar = ({ showSidebar }) => {
-    console.log(showSidebar);
     return (
         <div
             className={`fixed right-0 top-0 flex h-screen w-80 ${showSidebar ? "translate-x-0" : "translate-x-full"} items-center justify-center bg-[#001F3F] transition-all duration-700 ease-in-out ${showSidebar ? "translate-x-0" : ""}`}
