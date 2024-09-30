@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { propertyType } from "../data/propertyType/propertyType";
+import { propertyType } from "../data/propertyType";
 import { useForm } from "react-hook-form";
 
 const SearchBar = () => {
@@ -34,24 +34,25 @@ const SearchBar = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col gap-4 rounded-b-2xl rounded-tr-2xl border-2 border-teal-600 p-4 text-gray-700 xl:flex-row"
             >
-                <div className="grid -mx-8 gap-y-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                    <div className="flex flex-col border-r-0 md:border-r-2 border-gray-300 px-8">
-                        <label htmlFor="propertyType" className="font-semibold">
-                            Property Type
+                <div className="-mx-8 grid grid-cols-1 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
+                    <div className="flex flex-col border-r-0 border-gray-300 px-8 md:border-r-2">
+                        <label htmlFor="property" className="font-semibold">
+                            Property
                         </label>
                         <select
-                            id="propertyType"
-                            name="propertyType"
+                            id="property"
+                            name="property"
                             className="border-none bg-transparent p-0 italic focus:outline-none focus:ring-0"
                         >
                             {propertyType.map((type) => (
                                 <option key={type} value={type}>
-                                    {type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()}
+                                    {type.charAt(0).toUpperCase() +
+                                        type.slice(1).toLowerCase()}
                                 </option>
                             ))}
                         </select>
                     </div>
-                    <div className="lg:border-r-2 border-gray-300 px-8">
+                    <div className="border-gray-300 px-8 lg:border-r-2">
                         <label htmlFor="location" className="font-semibold">
                             Location
                         </label>
@@ -63,7 +64,7 @@ const SearchBar = () => {
                             placeholder="Eg. Ho Chi Minh City"
                         />
                     </div>
-                    <div className="border-r-0 md:border-r-2 border-gray-300 px-8">
+                    <div className="border-r-0 border-gray-300 px-8 md:border-r-2">
                         <label htmlFor="location" className="font-semibold">
                             Min Price
                         </label>
@@ -71,6 +72,7 @@ const SearchBar = () => {
                             id="minPrice"
                             name="minPrice"
                             type="number"
+                            min={0}
                             className="w-full border-none bg-transparent p-0 italic focus:outline-none focus:ring-0"
                             placeholder="Min Price"
                         />
@@ -83,12 +85,13 @@ const SearchBar = () => {
                             id="minPrice"
                             name="minPrice"
                             type="number"
+                            min={0}
                             className="w-full border-none bg-transparent p-0 italic focus:outline-none focus:ring-0"
                             placeholder="Max Price"
                         />
                     </div>
                 </div>
-                <button className="rounded bg-teal-600 py-2 text-white lg:px-6">
+                <button className="rounded bg-teal-600 py-2 text-white lg:px-6 hover:bg-teal-700 transition-colors duration-300">
                     Search
                 </button>
             </form>

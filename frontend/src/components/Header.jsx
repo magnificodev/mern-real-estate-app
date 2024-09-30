@@ -7,7 +7,7 @@ const Header = () => {
     const [showSidebar, setShowSidebar] = useState(false);
 
     return (
-        <header className="">
+        <header className="sticky top-0 z-10 bg-white">
             <nav className="section-container flex h-20 items-center justify-between">
                 <div className="flex items-center gap-12">
                     <h1 className="bg-gradient-to-br from-teal-500 to-teal-700 bg-clip-text text-3xl font-bold text-transparent">
