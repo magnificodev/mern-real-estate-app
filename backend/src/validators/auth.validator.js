@@ -1,0 +1,68 @@
+import { body } from "express-validator";
+import prisma from "../lib/prisma.js";
+
+export const signUpValidator = [
+    body("username")
+        .trim()
+        .notEmpty()
+        .withMessage("All fields are required")
+        .isLength({ min: 4 })
+        .withMessage("Username must be at least 4 characters")
+        .matches(/^[A-Za-z0-9_]+$/)
+        .withMessage(
+            "Username can only include letters, numbers, and underscores"
+        )
+        .custom(async (value) => {
+            const user = await prisma.user.findFirst({
+                where: {
+                    username: value,
+                },
+            });
+            if (user) {
+                throw new Error("Username already exists");
+            }
+        }),
+    body("email")
+        .trim()
+        .notEmpty()
+        .withMessage("All fields are required")
+        .isEmail()
+        .withMessage("Please enter a valid email")
+        .custom(async (value) => {
+            const user = await prisma.user.findFirst({
+                where: { email: value },
+            });
+            if (user) {
+                throw new Error("Email already exists");
+            }
+        }),
+    body("password")
+        .trim()
+        .notEmpty()
+        .withMessage("All fields are required")
+        .isLength({ min: 6 })
+        .withMessage("Password must be at least 6 characters"),
+];
+
+export const signInValidator = [
+    body("email")
+        .trim()
+        .notEmpty()
+        .withMessage("All fields are required")
+        .isEmail()
+        .withMessage("Please enter a valid email")
+        .custom(async (value) => {
+            const user = await prisma.user.findFirst({
+                where: { email: value },
+            });
+            if (user) {
+                throw new Error("Email already exists");
+            }
+        }),
+    body("password")
+        .trim()
+        .notEmpty()
+        .withMessage("All fields are required")
+        .isLength({ min: 6 })
+        .withMessage("Password must be at least 6 characters"),
+];

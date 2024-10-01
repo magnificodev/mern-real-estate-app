@@ -4,7 +4,7 @@ import Statistics from "../components/Statistics";
 
 const HomePage = () => {
     return (
-        <div className="section-container min-h-[calc(100vh-5rem)]">
+        <div className="section-container">
             <div className="relative">
                 <video
                     autoPlay
