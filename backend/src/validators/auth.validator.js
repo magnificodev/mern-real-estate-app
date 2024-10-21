@@ -13,7 +13,7 @@ export const signUpValidator = [
             "Username can only include letters, numbers, and underscores"
         )
         .custom(async (value) => {
-            const user = await prisma.user.findFirst({
+            const user = await prisma.user.findUnique({
                 where: {
                     username: value,
                 },
@@ -29,7 +29,7 @@ export const signUpValidator = [
         .isEmail()
         .withMessage("Please enter a valid email")
         .custom(async (value) => {
-            const user = await prisma.user.findFirst({
+            const user = await prisma.user.findUnique({
                 where: { email: value },
             });
             if (user) {
@@ -52,11 +52,11 @@ export const signInValidator = [
         .isEmail()
         .withMessage("Please enter a valid email")
         .custom(async (value) => {
-            const user = await prisma.user.findFirst({
+            const user = await prisma.user.findUnique({
                 where: { email: value },
             });
-            if (user) {
-                throw new Error("Email already exists");
+            if (!user) {
+                throw new Error("Your account doesn't exist");
             }
         }),
     body("password")
