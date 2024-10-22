@@ -8,6 +8,7 @@ import { Avatar } from "flowbite-react";
 const Header = () => {
     const [showSidebar, setShowSidebar] = useState(false);
     const currentUser = useSelector((state) => state.user.currentUser);
+    const isSignedIn = currentUser !== null;
 
     return (
         <header className="sticky top-0 z-10 border-b-2 border-gray-200 bg-white">
@@ -31,7 +32,7 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                {currentUser ? (
+                {isSignedIn ? (
                     <div className="flex items-center gap-4">
                         <Avatar
                             img={currentUser.avatar}
