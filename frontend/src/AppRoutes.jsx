@@ -4,6 +4,8 @@ import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
 import RealEstateDetailPage from "./pages/RealEstateDetailPage";
 import ProfilePage from "./pages/ProfilePage";
+import SignUpPage from "./pages/SignUpPage";
+import SignInPage from "./pages/SignInPage";
 function AppRoutes() {
     return (
         <Router>
@@ -13,6 +15,8 @@ function AppRoutes() {
                     <Route path="/search" element={<SearchPage />} />
                     <Route path="/real-estate/:id" element={<RealEstateDetailPage />} />
                     <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/sign-up" element={<SignUpPage />} />
+                    <Route path="/sign-in" element={<SignInPage />} />
                 </Route>
             </Routes>
         </Router>
