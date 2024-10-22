@@ -38,4 +38,20 @@ export const signIn = async (data) => {
 
 export const googleAuth = async (data) => {};
 
-export const signOut = async () => {};
+export const signOut = async () => {
+    try {
+        const response = await axios.post("/api/v1/auth/signout");
+
+        if (response.data.status === "failure") {
+            throw new Error(response.data.message);
+        }
+
+        return response.data;
+    } catch (err) {
+        if (err.response) {
+            throw new Error(err.response.data.message);
+        } else {
+            throw new Error(err.message);
+        }
+    }
+};

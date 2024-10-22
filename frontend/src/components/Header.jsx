@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import Sidebar from "./Sidebar";
 import { useSelector } from "react-redux";
+import { Avatar } from "flowbite-react";
 
 const Header = () => {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -30,20 +31,38 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="flex h-full w-1/3 items-center justify-end gap-4">
-                    <button className="hidden px-6 py-2 transition-all duration-100 hover:scale-105 hover:text-teal-700 md:block">
-                        <Link to="/sign-in">Sign in</Link>
-                    </button>
-                    <button className="hidden rounded-md bg-teal-600 px-6 py-2 text-white transition-all duration-300 hover:scale-105 hover:bg-teal-700 md:block">
-                        <Link to="/sign-up">Sign up</Link>
-                    </button>
-                    <button
-                        className="relative z-10 block rounded-full bg-[#001F3F] p-2 text-white md:hidden"
-                        onClick={() => setShowSidebar((prev) => !prev)}
-                    >
-                        {showSidebar ? <FiX size={28} /> : <FiMenu size={28} />}
-                    </button>
-                </div>
+                {currentUser ? (
+                    <div className="flex items-center gap-4">
+                        <Avatar
+                            img={currentUser.avatar}
+                            alt="avatar of Jese"
+                            rounded
+                        />
+                        <p className="font-medium">{currentUser.username}</p>
+                        <button className="relative hidden rounded-md bg-teal-600 px-6 py-2 text-white transition-all duration-300 hover:bg-teal-700 md:block">
+                            <Link to="/profile">Profile</Link>
+                            <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-sm font-semibold">
+                                1
+                            </span>
+                        </button>
+                    </div>
+                ) : (
+                    <div className="flex h-full w-1/3 items-center justify-end gap-4">
+                        <button className="hidden px-6 py-2 transition-all duration-100 hover:scale-105 hover:text-teal-700 md:block">
+                            <Link to="/sign-in">Sign in</Link>
+                        </button>
+                        <button className="hidden rounded-md bg-teal-600 px-6 py-2 text-white transition-all duration-300 hover:scale-105 hover:bg-teal-700 md:block">
+                            <Link to="/sign-up">Sign up</Link>
+                        </button>
+                    </div>
+                )}
+
+                <button
+                    className="relative z-10 block rounded-full bg-[#001F3F] p-2 text-white md:hidden"
+                    onClick={() => setShowSidebar((prev) => !prev)}
+                >
+                    {showSidebar ? <FiX size={28} /> : <FiMenu size={28} />}
+                </button>
                 <Sidebar showSidebar={showSidebar} />
             </nav>
         </header>

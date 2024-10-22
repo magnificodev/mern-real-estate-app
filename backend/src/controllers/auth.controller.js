@@ -80,4 +80,16 @@ export const signIn = async (req, res, next) => {
     }
 };
 
-export const signOut = async (req, res, next) => {};
+export const signOut = async (req, res, next) => {
+    try {
+        res.clearCookie("accessToken")
+            .clearCookie("refreshToken")
+            .status(200)
+            .json({
+                status: "success",
+                message: "Sign out successfully",
+            });
+    } catch (err) {
+        next(err);
+    }
+};

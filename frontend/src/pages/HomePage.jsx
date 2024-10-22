@@ -4,7 +4,7 @@ import Statistics from "../components/Statistics";
 
 const HomePage = () => {
     return (
-        <div className="section-container">
+        <div className="section-container py-10">
             <div className="relative">
                 <video
                     autoPlay
