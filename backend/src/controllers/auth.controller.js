@@ -80,6 +80,14 @@ export const signIn = async (req, res, next) => {
     }
 };
 
+export const googleAuth = async (req, res, next) => {
+    try {
+        
+    } catch (err) {
+        next(err);
+    }
+};
+
 export const signOut = async (req, res, next) => {
     try {
         res.clearCookie("accessToken")
