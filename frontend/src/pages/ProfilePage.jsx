@@ -66,10 +66,10 @@ const ProfilePage = () => {
                             {isSigningOut ? (
                                 <>
                                     <Spinner size="sm" />
-                                    <span className="ml-2">Signing in...</span>
+                                    <span className="ml-2">Signing out...</span>
                                 </>
                             ) : (
-                                "Sign in"
+                                "Sign out"
                             )}
                         </button>
                     </div>
